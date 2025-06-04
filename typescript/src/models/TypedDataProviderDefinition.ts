@@ -89,13 +89,20 @@ import {
     SentinelS2L2ACogsProviderDefinitionFromJSONTyped,
     SentinelS2L2ACogsProviderDefinitionToJSON,
 } from './SentinelS2L2ACogsProviderDefinition';
+import type { WildliveDataConnectorDefinition } from './WildliveDataConnectorDefinition';
+import {
+    instanceOfWildliveDataConnectorDefinition,
+    WildliveDataConnectorDefinitionFromJSON,
+    WildliveDataConnectorDefinitionFromJSONTyped,
+    WildliveDataConnectorDefinitionToJSON,
+} from './WildliveDataConnectorDefinition';
 
 /**
  * @type TypedDataProviderDefinition
  * 
  * @export
  */
-export type TypedDataProviderDefinition = { type: 'Aruna' } & ArunaDataProviderDefinition | { type: 'CopernicusDataspace' } & CopernicusDataspaceDataProviderDefinition | { type: 'DatasetLayerListing' } & DatasetLayerListingProviderDefinition | { type: 'EbvPortal' } & EbvPortalDataProviderDefinition | { type: 'Edr' } & EdrDataProviderDefinition | { type: 'Gbif' } & GbifDataProviderDefinition | { type: 'GfbioAbcd' } & GfbioAbcdDataProviderDefinition | { type: 'GfbioCollections' } & GfbioCollectionsDataProviderDefinition | { type: 'NetCdfCf' } & NetCdfCfDataProviderDefinition | { type: 'Pangaea' } & PangaeaDataProviderDefinition | { type: 'SentinelS2L2ACogs' } & SentinelS2L2ACogsProviderDefinition;
+export type TypedDataProviderDefinition = { type: 'Aruna' } & ArunaDataProviderDefinition | { type: 'CopernicusDataspace' } & CopernicusDataspaceDataProviderDefinition | { type: 'DatasetLayerListing' } & DatasetLayerListingProviderDefinition | { type: 'EbvPortal' } & EbvPortalDataProviderDefinition | { type: 'Edr' } & EdrDataProviderDefinition | { type: 'Gbif' } & GbifDataProviderDefinition | { type: 'GfbioAbcd' } & GfbioAbcdDataProviderDefinition | { type: 'GfbioCollections' } & GfbioCollectionsDataProviderDefinition | { type: 'NetCdfCf' } & NetCdfCfDataProviderDefinition | { type: 'Pangaea' } & PangaeaDataProviderDefinition | { type: 'SentinelS2L2ACogs' } & SentinelS2L2ACogsProviderDefinition | { type: 'WildLIVE!' } & WildliveDataConnectorDefinition;
 
 export function TypedDataProviderDefinitionFromJSON(json: any): TypedDataProviderDefinition {
     return TypedDataProviderDefinitionFromJSONTyped(json, false);
@@ -128,6 +135,8 @@ export function TypedDataProviderDefinitionFromJSONTyped(json: any, ignoreDiscri
             return Object.assign({}, PangaeaDataProviderDefinitionFromJSONTyped(json, true), { type: 'Pangaea' } as const);
         case 'SentinelS2L2ACogs':
             return Object.assign({}, SentinelS2L2ACogsProviderDefinitionFromJSONTyped(json, true), { type: 'SentinelS2L2ACogs' } as const);
+        case 'WildLIVE!':
+            return Object.assign({}, WildliveDataConnectorDefinitionFromJSONTyped(json, true), { type: 'WildLIVE!' } as const);
         default:
             throw new Error(`No variant of TypedDataProviderDefinition exists with 'type=${json['type']}'`);
     }
@@ -164,6 +173,8 @@ export function TypedDataProviderDefinitionToJSONTyped(value?: TypedDataProvider
             return Object.assign({}, PangaeaDataProviderDefinitionToJSON(value), { type: 'Pangaea' } as const);
         case 'SentinelS2L2ACogs':
             return Object.assign({}, SentinelS2L2ACogsProviderDefinitionToJSON(value), { type: 'SentinelS2L2ACogs' } as const);
+        case 'WildLIVE!':
+            return Object.assign({}, WildliveDataConnectorDefinitionToJSON(value), { type: 'WildLIVE!' } as const);
         default:
             throw new Error(`No variant of TypedDataProviderDefinition exists with 'type=${value['type']}'`);
     }

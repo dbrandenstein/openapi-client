@@ -20,6 +20,7 @@ import type { GfbioCollectionsDataProviderDefinition } from './GfbioCollectionsD
 import type { NetCdfCfDataProviderDefinition } from './NetCdfCfDataProviderDefinition';
 import type { PangaeaDataProviderDefinition } from './PangaeaDataProviderDefinition';
 import type { SentinelS2L2ACogsProviderDefinition } from './SentinelS2L2ACogsProviderDefinition';
+import type { WildliveDataConnectorDefinition } from './WildliveDataConnectorDefinition';
 /**
  * @type TypedDataProviderDefinition
  *
@@ -47,7 +48,9 @@ export type TypedDataProviderDefinition = {
     type: 'Pangaea';
 } & PangaeaDataProviderDefinition | {
     type: 'SentinelS2L2ACogs';
-} & SentinelS2L2ACogsProviderDefinition;
+} & SentinelS2L2ACogsProviderDefinition | {
+    type: 'WildLIVE!';
+} & WildliveDataConnectorDefinition;
 export declare function TypedDataProviderDefinitionFromJSON(json: any): TypedDataProviderDefinition;
 export declare function TypedDataProviderDefinitionFromJSONTyped(json: any, ignoreDiscriminator: boolean): TypedDataProviderDefinition;
 export declare function TypedDataProviderDefinitionToJSON(json: any): any;
